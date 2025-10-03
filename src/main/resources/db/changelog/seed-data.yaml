@@ -1,0 +1,958 @@
+
+  databaseChangeLog:
+    - changeSet:
+        id: seed-1-companies
+        author: cihan
+        runAlways: true
+        changes:
+          - insert:
+              tableName: companies
+              columns:
+                - column: { name: name, value: "Ubisoft" }
+          - insert:
+              tableName: companies
+              columns:
+                - column: { name: name, value: "EA Games" }
+          - insert:
+              tableName: companies
+              columns:
+                - column: { name: name, value: "Rockstar Games" }
+
+    - changeSet:
+        id: seed-2-games
+        author: cihan
+        runAlways: true
+        changes:
+          # Ubisoft oyunları
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 1 }
+                - column: { name: name, value: "Assassin's Creed" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 1 }
+                - column: { name: name, value: "Far Cry" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 1 }
+                - column: { name: name, value: "Watch Dogs" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 1 }
+                - column: { name: name, value: "The Division" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 1 }
+                - column: { name: name, value: "Ghost Recon" }
+
+          # EA Games oyunları
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 2 }
+                - column: { name: name, value: "FIFA 25" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 2 }
+                - column: { name: name, value: "Battlefield" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 2 }
+                - column: { name: name, value: "Need for Speed" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 2 }
+                - column: { name: name, value: "The Sims" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 2 }
+                - column: { name: name, value: "Mass Effect" }
+
+          # Rockstar Games oyunları
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 3 }
+                - column: { name: name, value: "GTA V" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 3 }
+                - column: { name: name, value: "Red Dead Redemption 2" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 3 }
+                - column: { name: name, value: "Max Payne 3" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 3 }
+                - column: { name: name, value: "L.A. Noire" }
+          - insert:
+              tableName: games
+              columns:
+                - column: { name: company_id, valueNumeric: 3 }
+                - column: { name: name, value: "Bully" }
+
+    - changeSet:
+          id: seed-3-events
+          author: cihan
+          runAlways: true
+          changes:
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 120.50
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-12 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 98.20
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-13 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 150.00
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-15 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 200.00
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-13 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 2
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 95.00
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-14 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 105.50
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-15 10:00:00"
+
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 130.00
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-16 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 250.00
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-17 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 300.00
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-18 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 280.00
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-19 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 400.00
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-22 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 420.00
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-21 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 410.50
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 1
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 150.00
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-23 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 2
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 100.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 2
+                            - column:
+                                name: type
+                                value: "PURCHASES"
+                            - column:
+                                name: amount
+                                valueNumeric: 110.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-21 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 2
+                            - column:
+                                name: type
+                                value: "PURCHASES"
+                            - column:
+                                name: amount
+                                valueNumeric: 120.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-22 10:00:00"
+
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 3
+                            - column:
+                                name: type
+                                value: "ADS"
+                            - column:
+                                name: amount
+                                valueNumeric: 100.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-20 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 3
+                            - column:
+                                name: type
+                                value: "ADS"
+                            - column:
+                                name: amount
+                                valueNumeric: 110.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-21 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 3
+                            - column:
+                                name: type
+                                value: "PURCHASES"
+                            - column:
+                                name: amount
+                                valueNumeric: 120.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-22 10:00:00"
+
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 4
+                            - column:
+                                name: type
+                                value: "PURCHASES"
+                            - column:
+                                name: amount
+                                valueNumeric: 100.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-20 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 4
+                            - column:
+                                name: type
+                                value: "PURCHASES"
+                            - column:
+                                name: amount
+                                valueNumeric: 110.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-21 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 4
+                            - column:
+                                name: type
+                                value: "PURCHASES"
+                            - column:
+                                name: amount
+                                valueNumeric: 120.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-22 10:00:00"
+
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 5
+                            - column:
+                                name: type
+                                value: "PURCHASES"
+                            - column:
+                                name: amount
+                                valueNumeric: 100.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-20 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 5
+                            - column:
+                                name: type
+                                value: "PURCHASES"
+                            - column:
+                                name: amount
+                                valueNumeric: 110.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-21 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 5
+                            - column:
+                                name: type
+                                value: "PURCHASES"
+                            - column:
+                                name: amount
+                                valueNumeric: 120.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-22 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 6
+                            - column:
+                                name: type
+                                value: "ADS"
+                            - column:
+                                name: amount
+                                valueNumeric: 100.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-20 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 6
+                            - column:
+                                name: type
+                                value: "ADS"
+                            - column:
+                                name: amount
+                                valueNumeric: 110.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-21 10:00:00"
+                      - insert:
+                          tableName: events
+                          columns:
+                            - column:
+                                name: game_id
+                                valueNumeric: 6
+                            - column:
+                                name: type
+                                value: "PURCHASES"
+                            - column:
+                                name: amount
+                                valueNumeric: 120.0
+                            - column:
+                                name: timestamp
+                                valueDate: "2025-09-22 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 7
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 100.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 7
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 110.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-21 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 7
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 120.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-22 10:00:00"
+
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 8
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 100.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 8
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 110.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-21 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 8
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 120.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-22 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 9
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 100.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 9
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 110.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-21 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 9
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 120.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-22 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 10
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 100.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 10
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 110.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-21 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 10
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 120.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-22 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 11
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 100.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 11
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 110.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-21 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 11
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 120.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-22 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 12
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 100.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 12
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 110.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-21 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 12
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 120.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-22 10:00:00"
+
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 13
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 100.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 13
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 110.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-21 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 13
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 120.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-22 10:00:00"
+
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 14
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 100.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 14
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 110.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-21 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 14
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 120.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-22 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 15
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 100.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-20 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 15
+                      - column:
+                          name: type
+                          value: "PURCHASES"
+                      - column:
+                          name: amount
+                          valueNumeric: 110.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-21 10:00:00"
+                - insert:
+                    tableName: events
+                    columns:
+                      - column:
+                          name: game_id
+                          valueNumeric: 15
+                      - column:
+                          name: type
+                          value: "ADS"
+                      - column:
+                          name: amount
+                          valueNumeric: 120.0
+                      - column:
+                          name: timestamp
+                          valueDate: "2025-09-22 10:00:00"

@@ -2,6 +2,7 @@ package com.UDO.GameAnalytics.service;
 
 import com.UDO.GameAnalytics.dto.game.request.CreateGameRequestDto;
 import com.UDO.GameAnalytics.dto.game.response.CreateGameResponseDto;
+import com.UDO.GameAnalytics.dto.game.response.GameDto;
 import com.UDO.GameAnalytics.entity.Company;
 import com.UDO.GameAnalytics.entity.Game;
 import com.UDO.GameAnalytics.repository.GameRepository;
@@ -44,6 +45,11 @@ public class GameServiceImpl {
 
     public Game getGame(Long gameId) {
         return gameRepository.findById(gameId).orElse(null);
+    }
+    public List<GameDto> getAllGames() {
+        return gameRepository.findAll().stream()
+                .map(GameDto::new)
+                .toList();
     }
 
 

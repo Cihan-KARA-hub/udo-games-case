@@ -24,7 +24,7 @@ public class Company {
     @CreationTimestamp
     private OffsetDateTime createdAt;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Game> games = new ArrayList<>();
 
     public Long getId() {
