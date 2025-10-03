@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - include:
+      file: 02-10-companies.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 02-10-games.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 02-10-revenues.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 02-10-campaigns.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 02-10-campaign_spends.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 02-10-events.yaml
+      relativeToChangelogFile: true
