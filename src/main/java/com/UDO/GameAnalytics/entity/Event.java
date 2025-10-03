@@ -69,4 +69,15 @@ public class Event {
     public void setTimestamp(OffsetDateTime timestamp) {
         this.timestamp = timestamp;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", game=" + game +
+                ", type=" + type +
+                ", amount=" + amount +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }

@@ -16,6 +16,11 @@ public class CompanyRule {
         this.companyRepository = companyRepository;
     }
 
-
+    public void findExistById(String name) {
+        Optional<Company> company = companyRepository.findByName(name);
+        if (company.isPresent()) {
+            throw new RuntimeException("Company with name " + name + " already exists");
+        }
+    }
 
 }

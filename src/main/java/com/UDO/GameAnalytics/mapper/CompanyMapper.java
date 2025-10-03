@@ -6,9 +6,9 @@ import com.UDO.GameAnalytics.entity.Company;
 
 public class CompanyMapper {
 
-    public static Company createCompanyRequestDtoToEntity(CreateCompanyRequestDto createGameRequestDto,Integer nameCounter) {
+    public static Company createCompanyRequestDtoToEntity(CreateCompanyRequestDto createGameRequestDto) {
         Company company = new Company();
-        company.setName(createGameRequestDto.getName()+" "+nameCounter);
+        company.setName(createGameRequestDto.getName());
         return company;
     }
     public static CreateCompanyResponseDto entityToCreateCompanyResponseDto(Company company) {

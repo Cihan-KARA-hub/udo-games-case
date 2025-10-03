@@ -6,6 +6,7 @@ import com.UDO.GameAnalytics.repository.GameRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class GameRule {
@@ -13,5 +14,12 @@ public class GameRule {
 
     public GameRule(GameRepository gameRepository) {
         this.gameRepository = gameRepository;
+    }
+
+    public void findExistByGameName(String gameName) {
+        Optional<Game> game = gameRepository.findByName(gameName);
+        if (game.isPresent()) {
+            throw new RuntimeException("Game with name " + gameName + " already exists");
+        }
     }
 }

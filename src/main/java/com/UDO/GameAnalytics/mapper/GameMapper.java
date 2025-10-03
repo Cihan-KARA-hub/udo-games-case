@@ -6,10 +6,10 @@ import com.UDO.GameAnalytics.entity.Company;
 import com.UDO.GameAnalytics.entity.Game;
 
 public class GameMapper {
-    public static Game createReqToEntity(CreateGameRequestDto createGameRequestDto, Company company, Integer gameNameList) {
+    public static Game createReqToEntity(CreateGameRequestDto createGameRequestDto, Company company) {
         Game game = new Game();
         game.setCompany(company);
-        game.setName(createGameRequestDto.getName() + " " + gameNameList);
+        game.setName(createGameRequestDto.getName() );
         return game;
     }
 

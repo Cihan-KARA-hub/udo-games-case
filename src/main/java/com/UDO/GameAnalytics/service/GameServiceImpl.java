@@ -7,7 +7,10 @@ import com.UDO.GameAnalytics.entity.Game;
 import com.UDO.GameAnalytics.repository.GameRepository;
 import com.UDO.GameAnalytics.rules.CompanyRule;
 import com.UDO.GameAnalytics.rules.GameRule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +23,9 @@ public class GameServiceImpl {
     private final CompanyServiceImpl companyServiceImpl;
     private final GameRule gameRule;
 
+    private static final Logger log = LoggerFactory.getLogger(GameServiceImpl.class);
+
+
     public GameServiceImpl(GameRepository gameRepository, CompanyServiceImpl companyServiceImpl, GameRule gameRule) {
         this.gameRepository = gameRepository;
         this.companyServiceImpl = companyServiceImpl;
@@ -28,18 +34,17 @@ public class GameServiceImpl {
 
 
     public CreateGameResponseDto createGame(CreateGameRequestDto createGameRequestDto) {
+        gameRule.findExistByGameName(createGameRequestDto.getName());
         Company company = companyServiceImpl.getCompany(createGameRequestDto.getCompanyId());
-        Integer gameName = gameNameList(createGameRequestDto.getName());
-        Game game = createReqToEntity(createGameRequestDto, company, gameName);
+        Game game = createReqToEntity(createGameRequestDto, company);
         gameRepository.save(game);
+        log.info("Game created successfully{}", game.toString());
         return entityToResponseDto(game);
     }
+
     public Game getGame(Long gameId) {
         return gameRepository.findById(gameId).orElse(null);
     }
 
-    private Integer gameNameList(String name) {
-        List<Game> gameList = gameRepository.findByName(name);
-        return gameList.size();
-    }
+
 }
