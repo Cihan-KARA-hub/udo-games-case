@@ -2,9 +2,14 @@ package com.UDO.GameAnalytics.controller;
 
 import com.UDO.GameAnalytics.dto.event.request.CreateEventRequestDto;
 import com.UDO.GameAnalytics.dto.event.response.CreateEventResponseDto;
+import com.UDO.GameAnalytics.dto.event.response.RevenuesResponseDto;
+import com.UDO.GameAnalytics.dto.game.response.GameDto;
+import com.UDO.GameAnalytics.entity.Event;
 import com.UDO.GameAnalytics.service.EventServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/events")
@@ -19,5 +24,11 @@ public class EventController {
     @ResponseStatus(HttpStatus.CREATED)
     public CreateEventResponseDto createEventRequestDto(@RequestBody CreateEventRequestDto createEventRequestDto) {
         return eventService.createEvent(createEventRequestDto);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<RevenuesResponseDto> getAllGames() {
+        return eventService.getEventAll();
     }
 }

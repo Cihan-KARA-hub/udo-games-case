@@ -2,15 +2,22 @@ package com.UDO.GameAnalytics.service;
 
 import com.UDO.GameAnalytics.dto.event.request.CreateEventRequestDto;
 import com.UDO.GameAnalytics.dto.event.response.CreateEventResponseDto;
+import com.UDO.GameAnalytics.dto.event.response.RevenuesResponseDto;
 import com.UDO.GameAnalytics.entity.Event;
 import com.UDO.GameAnalytics.entity.Game;
+import com.UDO.GameAnalytics.mapper.EventMapper;
 import com.UDO.GameAnalytics.repository.EventRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import static com.UDO.GameAnalytics.mapper.EventMapper.createEventRequestDtoToEntity;
-import static com.UDO.GameAnalytics.mapper.EventMapper.entityToCreateEventResponseDto;
+import java.util.List;
+
+import static com.UDO.GameAnalytics.mapper.EventMapper.*;
+
 @Service
 public class EventServiceImpl {
 
@@ -31,5 +38,18 @@ public class EventServiceImpl {
         eventRepository.save(event);
         log.info("Event created successfully{}", event.toString());
         return entityToCreateEventResponseDto(event);
+    }
+
+    public List<RevenuesResponseDto> getEventAll() {
+        return eventRepository.findAll()
+                .stream()
+                .map(EventMapper::entityToRevenuesResponseDto)
+                .toList();
+    }
+
+    public Page<Event> getPageRevenues(Long id, int size, int page) {
+        Pageable pageable = PageRequest.of(page, size);
+        return eventRepository.findByGameId(id, pageable);
+
     }
 }

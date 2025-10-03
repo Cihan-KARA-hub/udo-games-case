@@ -2,6 +2,7 @@ package com.UDO.GameAnalytics.mapper;
 
 import com.UDO.GameAnalytics.dto.event.request.CreateEventRequestDto;
 import com.UDO.GameAnalytics.dto.event.response.CreateEventResponseDto;
+import com.UDO.GameAnalytics.dto.event.response.RevenuesResponseDto;
 import com.UDO.GameAnalytics.entity.Event;
 import com.UDO.GameAnalytics.entity.Game;
 
@@ -18,5 +19,11 @@ public class EventMapper {
 
     public static CreateEventResponseDto entityToCreateEventResponseDto(Event event) {
         return new CreateEventResponseDto(event.getGame().getId(), event.getAmount());
+    }
+    public static RevenuesResponseDto  entityToRevenuesResponseDto(Event event) {
+        RevenuesResponseDto  revenuesResponseDto = new RevenuesResponseDto();
+        revenuesResponseDto.setRevenue(event.getAmount());
+        revenuesResponseDto.setTimestamp(event.getTimestamp());
+        return revenuesResponseDto;
     }
 }
