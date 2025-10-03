@@ -34,6 +34,9 @@ public class GameServiceImpl {
         gameRepository.save(game);
         return entityToResponseDto(game);
     }
+    public Game getGame(Long gameId) {
+        return gameRepository.findById(gameId).orElse(null);
+    }
 
     private Integer gameNameList(String name) {
         List<Game> gameList = gameRepository.findByName(name);
