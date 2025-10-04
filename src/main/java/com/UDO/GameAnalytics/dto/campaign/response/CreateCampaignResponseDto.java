@@ -1,6 +1,7 @@
 package com.UDO.GameAnalytics.dto.campaign.response;
 
 import com.UDO.GameAnalytics.entity.Campaign;
+import com.UDO.GameAnalytics.entity.enums.Currency;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,7 +12,15 @@ public class CreateCampaignResponseDto {
     private OffsetDateTime startDate;
     private OffsetDateTime endDate;
     private BigDecimal price;
+    private Currency currency;
 
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 
     public String getName() {
         return name;

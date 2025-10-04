@@ -1,10 +1,13 @@
 package com.UDO.GameAnalytics.dto.campaign.response;
 
+import com.UDO.GameAnalytics.entity.enums.Currency;
+
 import java.math.BigDecimal;
+import java.util.Map;
 
 public class CampaignSpendResponseDto {
     private Long gameId;
-    private BigDecimal spent;
+    private Map<String, BigDecimal> totalsByCurrency;
 
     public Long getGameId() {
         return gameId;
@@ -14,11 +17,11 @@ public class CampaignSpendResponseDto {
         this.gameId = gameId;
     }
 
-    public BigDecimal getSpent() {
-        return spent;
+    public Map<String, BigDecimal> getTotalsByCurrency() {
+        return totalsByCurrency;
     }
 
-    public void setSpent(BigDecimal spent) {
-        this.spent = spent;
+    public void setTotalsByCurrency(Map<String, BigDecimal> totalsByCurrency) {
+        this.totalsByCurrency = totalsByCurrency;
     }
 }

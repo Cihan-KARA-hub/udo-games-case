@@ -16,10 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import java.math.BigDecimal;
+import java.util.Currency;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import static com.UDO.GameAnalytics.mapper.CampaignMapper.createCampaignRequestDtoToEntity;
-import static com.UDO.GameAnalytics.mapper.CampaignMapper.entityToCreateCampaignResponseDto;
+import static com.UDO.GameAnalytics.mapper.CampaignMapper.*;
 import static com.UDO.GameAnalytics.mapper.CampaignSpendMapper.toCreateCampaignSpendRequestDto;
 
 @Service
@@ -43,19 +45,27 @@ public class CampaignServiceImpl {
         log.debug("Created campaign {}", campaign);
         CreateCampaignSpendRequestDto createCampaignSpendRequestDto = toCreateCampaignSpendRequestDto(campaign, campaignSpend.getPrice(),campaignSpend.getDefaultCurrency());
         campaignSpendService.create(createCampaignSpendRequestDto);
-        return entityToCreateCampaignResponseDto(campaign, campaignSpend.getPrice());
+        return entityToCreateCampaignResponseDto(campaign, campaignSpend.getPrice(),campaignSpend.getDefaultCurrency());
     }
     @Transactional
     public CampaignSpendResponseDto getSpendGameId(Long gameId) {
         List<Campaign> campaignList = campaignRepository.findByGameId(gameId);
-        BigDecimal totalAmount = campaignList.stream()
-                .flatMap(campaign -> campaign.getSpends().stream())
-                .map(CampaignSpend::getAmount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-        CampaignSpendResponseDto response = new CampaignSpendResponseDto();
-        response.setSpent(totalAmount);
-        response.setGameId(gameId);
-        return response;
+
+        Map<String, BigDecimal> amountByCurrency = new HashMap<>();
+
+        for (Campaign campaign : campaignList) {
+            for (CampaignSpend spend : campaign.getSpends()) {
+                if (spend.getAmount() != null && spend.getCurrency() != null) {
+                    String currency = spend.getCurrency().name(); // Enum ise name() daha temiz
+                    BigDecimal currentAmount = amountByCurrency.getOrDefault(currency, BigDecimal.ZERO);
+                    amountByCurrency.put(currency, currentAmount.add(spend.getAmount()));
+                }
+            }
+        }
+
+        return entityToCampaignSpendResponseDto(amountByCurrency, gameId);
     }
+
+
 
 }
