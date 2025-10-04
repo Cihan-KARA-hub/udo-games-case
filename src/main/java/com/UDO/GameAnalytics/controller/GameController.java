@@ -6,6 +6,7 @@ import com.UDO.GameAnalytics.dto.game.response.CreateGameResponseDto;
 import com.UDO.GameAnalytics.dto.game.response.GameDto;
 import com.UDO.GameAnalytics.entity.Game;
 import com.UDO.GameAnalytics.service.GameServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class GameController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateGameResponseDto create(@RequestBody CreateGameRequestDto createGameRequestDto) {
+    public CreateGameResponseDto create(@RequestBody @Valid CreateGameRequestDto createGameRequestDto) {
         return gameService.createGame(createGameRequestDto);
     }
 

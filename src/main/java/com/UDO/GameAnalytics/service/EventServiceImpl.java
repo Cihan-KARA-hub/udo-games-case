@@ -7,33 +7,39 @@ import com.UDO.GameAnalytics.entity.Event;
 import com.UDO.GameAnalytics.entity.Game;
 import com.UDO.GameAnalytics.mapper.EventMapper;
 import com.UDO.GameAnalytics.repository.EventRepository;
+import com.UDO.GameAnalytics.rules.GameRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
 import static com.UDO.GameAnalytics.mapper.EventMapper.*;
 
 @Service
+@Validated
 public class EventServiceImpl {
 
     private final EventRepository eventRepository;
-    private final GameServiceImpl gameService;
+    private final GameRule gameRule;
 
     private static final Logger log = LoggerFactory.getLogger(EventServiceImpl.class);
 
 
-    public EventServiceImpl(EventRepository eventRepository, GameServiceImpl gameService) {
+    public EventServiceImpl(EventRepository eventRepository, GameRule gameRule) {
         this.eventRepository = eventRepository;
-        this.gameService = gameService;
+
+
+        this.gameRule = gameRule;
     }
 
     public CreateEventResponseDto createEvent(CreateEventRequestDto createEventRequestDto) {
-        Game game = gameService.getGame(createEventRequestDto.getGameId());
+        Game game = gameRule.findExistById(createEventRequestDto.getGameId());
         Event event = createEventRequestDtoToEntity(createEventRequestDto, game);
         eventRepository.save(event);
         log.info("Event created successfully{}", event.toString());

@@ -21,13 +21,13 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: date
-                  type: DATE
+                  name: amount
+                  type: NUMERIC(12,2)
                   constraints:
                     nullable: false
               - column:
-                  name: amount
-                  type: NUMERIC(12,2)
+                  name: currency
+                  type: VARCHAR(4)
                   constraints:
                     nullable: false
               - column:

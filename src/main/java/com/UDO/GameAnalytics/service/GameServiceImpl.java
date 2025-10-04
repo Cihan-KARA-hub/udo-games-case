@@ -9,13 +9,12 @@ import com.UDO.GameAnalytics.entity.Event;
 import com.UDO.GameAnalytics.entity.Game;
 import com.UDO.GameAnalytics.mapper.EventMapper;
 import com.UDO.GameAnalytics.repository.GameRepository;
-import com.UDO.GameAnalytics.rules.CompanyRule;
 import com.UDO.GameAnalytics.rules.GameRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
@@ -23,6 +22,7 @@ import static com.UDO.GameAnalytics.mapper.GameMapper.createReqToEntity;
 import static com.UDO.GameAnalytics.mapper.GameMapper.entityToResponseDto;
 
 @Service
+@Validated
 public class GameServiceImpl {
     private final GameRepository gameRepository;
     private final CompanyServiceImpl companyServiceImpl;
@@ -49,8 +49,8 @@ public class GameServiceImpl {
         return entityToResponseDto(game);
     }
 
-    public Game getGame(Long gameId) {
-        return gameRepository.findById(gameId).orElse(null);
+    public void getGame(Long gameId) {
+         gameRepository.findById(gameId).orElseThrow(() -> new RuntimeException("Game not found"));
     }
 
     public List<GameDto> getAllGames() {

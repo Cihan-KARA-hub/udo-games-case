@@ -18,7 +18,7 @@
             <AppenderRef ref="FileLogger" />
         </Root>
 
-        <Logger name="com.finkoto" level="debug" additivity="false">
+        <Logger name="com.UDO" level="debug" additivity="false">
             <AppenderRef ref="Console" />
         </Logger>
     </Loggers>

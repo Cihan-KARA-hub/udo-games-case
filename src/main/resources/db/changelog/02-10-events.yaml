@@ -29,6 +29,10 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: currency
+                  type: VARCHAR(4)
+
+              - column:
                   name: timestamp
                   type: TIMESTAMP WITH TIME ZONE
                   defaultValueComputed: "now()"

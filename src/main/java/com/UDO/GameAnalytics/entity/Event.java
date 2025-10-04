@@ -1,6 +1,8 @@
 package com.UDO.GameAnalytics.entity;
 
+import com.UDO.GameAnalytics.entity.enums.Currency;
 import com.UDO.GameAnalytics.entity.enums.IncomeType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -26,7 +28,20 @@ public class Event {
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal amount;
 
+    @Column(name = "currency", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Currency currency;
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
     @Column(name = "timestamp", nullable = false, columnDefinition = "TIMESTAMP WITH TIME ZONE DEFAULT now()")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "UTC")
     @CreationTimestamp
     private OffsetDateTime timestamp;
 

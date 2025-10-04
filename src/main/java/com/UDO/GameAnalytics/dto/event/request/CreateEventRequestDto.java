@@ -1,5 +1,6 @@
 package com.UDO.GameAnalytics.dto.event.request;
 
+import com.UDO.GameAnalytics.entity.enums.Currency;
 import com.UDO.GameAnalytics.entity.enums.IncomeType;
 import jakarta.validation.constraints.*;
 
@@ -14,6 +15,16 @@ public class CreateEventRequestDto {
     @Positive
     @Min(0)
     private BigDecimal amount;
+    @NotNull
+    private Currency currency;
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 
     public BigDecimal getAmount() {
         return amount;

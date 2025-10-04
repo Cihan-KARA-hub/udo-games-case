@@ -22,7 +22,7 @@ public class GameRule {
             throw new RuntimeException("Game with name " + gameName + " already exists");
         }
     }
-    public void findExistById(Long gameId) {
-        gameRepository.findById(gameId).orElseThrow(() -> new RuntimeException("Game with id " + gameId + " does not exist"));
+    public Game findExistById(Long gameId) {
+       return gameRepository.findById(gameId).orElseThrow(() -> new RuntimeException("Game with id " + gameId + " does not exist"));
     }
 }
