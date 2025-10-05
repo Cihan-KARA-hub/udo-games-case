@@ -17,7 +17,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.UDO.GameAnalytics.mapper.EventMapper.*;
 
@@ -57,5 +60,19 @@ public class EventServiceImpl {
         Pageable pageable = PageRequest.of(page, size);
         return eventRepository.findByGameId(id, pageable);
 
+    }
+
+    public  Map<String,BigDecimal> findByGameIdTotalAmount(Long gameId) {
+      List<Event> eventList= eventRepository.findByGameId(gameId);
+        Map<String,BigDecimal> amountByCurrency = new HashMap<>();
+        for (Event event : eventList) {
+            if(event.getAmount()!=null && event.getCurrency()!=null){
+                String curr=event.getCurrency().name();
+                BigDecimal currentAmount = amountByCurrency.getOrDefault(curr, BigDecimal.ZERO);
+                amountByCurrency.put(curr, currentAmount.add(event.getAmount()));
+
+            }
+        }
+        return amountByCurrency;
     }
 }

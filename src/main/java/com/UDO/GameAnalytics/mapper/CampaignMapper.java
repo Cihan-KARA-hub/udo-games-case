@@ -18,8 +18,6 @@ public class CampaignMapper {
         campaign.setStartDate(createGameRequestDto.getStartDate());
         campaign.setEndDate(createGameRequestDto.getEndDate());
         campaign.setGameId(gameId);
-
-
         return campaign;
     }
 

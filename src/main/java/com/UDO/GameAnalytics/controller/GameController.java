@@ -4,6 +4,7 @@ import com.UDO.GameAnalytics.dto.event.response.RevenuesResponseDto;
 import com.UDO.GameAnalytics.dto.game.request.CreateGameRequestDto;
 import com.UDO.GameAnalytics.dto.game.response.CreateGameResponseDto;
 import com.UDO.GameAnalytics.dto.game.response.GameDto;
+import com.UDO.GameAnalytics.dto.game.response.GameProfitResponseDto;
 import com.UDO.GameAnalytics.entity.Game;
 import com.UDO.GameAnalytics.service.GameServiceImpl;
 import jakarta.validation.Valid;
@@ -41,5 +42,12 @@ public class GameController {
 
         return gameService.getByIdDailyRevenues(id,size,page);
     }
+    ///api/v1/games/{game-id}/profit  net kar
+    @GetMapping("{gameId}/profit")
+    @ResponseStatus(HttpStatus.OK)
+    public GameProfitResponseDto profit(@PathVariable Long gameId){
+        return  gameService.profit(gameId);
+    }
+
 
 }
