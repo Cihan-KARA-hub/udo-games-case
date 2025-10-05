@@ -66,7 +66,6 @@ public class GameServiceImpl {
                 .toList();
     }
 
-
     public Page<DailyTotalDto> getByIdDailyRevenues(Long id, int size, int page) {
         gameRule.findExistById(id);
          return   eventServiceImpl.getPageRevenues(id, size, page);

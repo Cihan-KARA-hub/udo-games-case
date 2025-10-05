@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "games")
@@ -22,7 +23,7 @@ public class Game {
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
 
-    @Column(nullable = false, columnDefinition = "TEXT",unique = true)
+    @Column(nullable = false, columnDefinition = "TEXT", unique = true)
     private String name;
 
     @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP WITH TIME ZONE DEFAULT now()")
@@ -82,5 +83,17 @@ public class Game {
                 ", name='" + name + '\'' +
                 ", createdAt=" + createdAt +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return Objects.equals(id, game.id) && Objects.equals(company, game.company) && Objects.equals(name, game.name) && Objects.equals(createdAt, game.createdAt) && Objects.equals(events, game.events);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, company, name, createdAt, events);
     }
 }

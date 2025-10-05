@@ -10,6 +10,7 @@ import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class CreateCampaignSpendRequestDto {
     @NotNull
@@ -22,6 +23,7 @@ public class CreateCampaignSpendRequestDto {
     private String description;
     @NotNull
     private Currency currency;
+
 
     public Currency getCurrency() {
         return currency;
@@ -53,5 +55,17 @@ public class CreateCampaignSpendRequestDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        CreateCampaignSpendRequestDto that = (CreateCampaignSpendRequestDto) o;
+        return Objects.equals(campaign, that.campaign) && Objects.equals(amount, that.amount) && Objects.equals(description, that.description) && currency == that.currency;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(campaign, amount, description, currency);
     }
 }

@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "events")
@@ -94,5 +95,17 @@ public class Event {
                 ", amount=" + amount +
                 ", timestamp=" + timestamp +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return Objects.equals(id, event.id) && Objects.equals(game, event.game) && type == event.type && Objects.equals(amount, event.amount) && currency == event.currency && Objects.equals(timestamp, event.timestamp);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, game, type, amount, currency, timestamp);
     }
 }

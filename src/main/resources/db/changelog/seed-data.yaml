@@ -23,7 +23,7 @@
         author: cihan
         runAlways: true
         changes:
-          # Ubisoft oyunları
+
           - insert:
               tableName: games
               columns:
@@ -50,7 +50,7 @@
                 - column: { name: company_id, valueNumeric: 1 }
                 - column: { name: name, value: "Ghost Recon" }
 
-          # EA Games oyunları
+
           - insert:
               tableName: games
               columns:
@@ -77,7 +77,7 @@
                 - column: { name: company_id, valueNumeric: 2 }
                 - column: { name: name, value: "Mass Effect" }
 
-          # Rockstar Games oyunları
+
           - insert:
               tableName: games
               columns:
