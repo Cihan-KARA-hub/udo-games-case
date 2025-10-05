@@ -24,7 +24,6 @@ public class CampaignController {
     public CreateCampaignResponseDto create(@RequestBody @Valid CreateCampaignRequestDto campaignSpend,@PathVariable Long gameId) {
        return campaignService.create(campaignSpend,gameId);
     }
-    ///api/v1/games/{game-id}/campaign-spent   bir oyun için toplam harcanan kapmanya tutar
     @GetMapping("{gameId}/campaign-spent")
     @ResponseStatus(HttpStatus.OK)
     public CampaignSpendResponseDto campaignSpentGameId(@PathVariable Long gameId){

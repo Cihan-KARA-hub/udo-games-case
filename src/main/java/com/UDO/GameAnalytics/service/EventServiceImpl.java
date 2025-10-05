@@ -2,6 +2,7 @@ package com.UDO.GameAnalytics.service;
 
 import com.UDO.GameAnalytics.dto.event.request.CreateEventRequestDto;
 import com.UDO.GameAnalytics.dto.event.response.CreateEventResponseDto;
+import com.UDO.GameAnalytics.dto.event.response.DailyTotalDto;
 import com.UDO.GameAnalytics.dto.event.response.RevenuesResponseDto;
 import com.UDO.GameAnalytics.entity.Event;
 import com.UDO.GameAnalytics.entity.Game;
@@ -56,9 +57,9 @@ public class EventServiceImpl {
                 .toList();
     }
 
-    public Page<Event> getPageRevenues(Long id, int size, int page) {
+    public Page<DailyTotalDto> getPageRevenues(Long id, int size, int page) {
         Pageable pageable = PageRequest.of(page, size);
-        return eventRepository.findByGameId(id, pageable);
+        return eventRepository.findDailyTotalsByGameId(id, pageable);
 
     }
 

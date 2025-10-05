@@ -26,8 +26,7 @@ public class CompanyController {
     public CreateCompanyResponseDto createEvent(@RequestBody @Valid CreateCompanyRequestDto requestDto) {
         return companyService.createCompany(requestDto);
     }
-    //    ///api/v1/games/{company-id}/profit
-   @GetMapping("{companyId}/profits")
+   @GetMapping("{companyId}/company-profit")
    @ResponseStatus(HttpStatus.OK)
     public CompanyProfitResponseDto profit(@PathVariable Long companyId) {
         return companyService.profit(companyId);

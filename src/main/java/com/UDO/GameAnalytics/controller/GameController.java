@@ -1,5 +1,6 @@
 package com.UDO.GameAnalytics.controller;
 
+import com.UDO.GameAnalytics.dto.event.response.DailyTotalDto;
 import com.UDO.GameAnalytics.dto.event.response.RevenuesResponseDto;
 import com.UDO.GameAnalytics.dto.game.request.CreateGameRequestDto;
 import com.UDO.GameAnalytics.dto.game.response.CreateGameResponseDto;
@@ -34,15 +35,13 @@ public class GameController {
     public List<GameDto> getAllGames() {
       return   gameService.getAllGames();
     }
-    ///api/v1/games/{game-id}/daily-revenues
     @GetMapping("{id}/daily-revenues")
-    public Page<RevenuesResponseDto> getByIdDailyRevenues(@PathVariable Long id,
-                                                          @RequestParam(defaultValue = "1") int size,
-                                                          @RequestParam(defaultValue = "0") int page) {
+    public Page<DailyTotalDto> getByIdDailyRevenues(@PathVariable Long id,
+                                                    @RequestParam(defaultValue = "3") int size,
+                                                    @RequestParam(defaultValue = "0") int page) {
 
         return gameService.getByIdDailyRevenues(id,size,page);
     }
-    ///api/v1/games/{game-id}/profit  net kar
     @GetMapping("{gameId}/profit")
     @ResponseStatus(HttpStatus.OK)
     public GameProfitResponseDto profit(@PathVariable Long gameId){

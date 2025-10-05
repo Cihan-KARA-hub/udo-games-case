@@ -1,5 +1,6 @@
 package com.UDO.GameAnalytics.service;
 
+import com.UDO.GameAnalytics.dto.event.response.DailyTotalDto;
 import com.UDO.GameAnalytics.dto.event.response.RevenuesResponseDto;
 import com.UDO.GameAnalytics.dto.game.request.CreateGameRequestDto;
 import com.UDO.GameAnalytics.dto.game.response.CreateGameResponseDto;
@@ -66,10 +67,9 @@ public class GameServiceImpl {
     }
 
 
-    public Page<RevenuesResponseDto> getByIdDailyRevenues(Long id, int size, int page) {
+    public Page<DailyTotalDto> getByIdDailyRevenues(Long id, int size, int page) {
         gameRule.findExistById(id);
-        Page<Event> events = eventServiceImpl.getPageRevenues(id, size, page);
-        return events.map(EventMapper::entityToRevenuesResponseDto);
+         return   eventServiceImpl.getPageRevenues(id, size, page);
     }
 
     public GameProfitResponseDto profit(Long gameId) {

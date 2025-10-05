@@ -27,9 +27,5 @@ public class EventController {
         return eventService.createEvent(createEventRequestDto);
     }
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<RevenuesResponseDto> getAllGames() {
-        return eventService.getEventAll();
-    }
+
 }
