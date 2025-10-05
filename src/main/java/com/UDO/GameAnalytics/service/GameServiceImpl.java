@@ -94,6 +94,7 @@ public class GameServiceImpl {
                 netByCurrency.put(currency, BigDecimal.ZERO.subtract(entry.getValue()));
             }
         }
+        log.info("Net Income for currency {}", netByCurrency.keySet());
         return netByCurrency;
     }
 

@@ -1,5 +1,6 @@
 package com.UDO.GameAnalytics.rules;
 
+import com.UDO.GameAnalytics.core.exception.type.BusinessException;
 import com.UDO.GameAnalytics.entity.Company;
 import com.UDO.GameAnalytics.repository.CompanyRepository;
 import com.UDO.GameAnalytics.service.CompanyServiceImpl;
@@ -19,7 +20,7 @@ public class CompanyRule {
     public void findExistById(String name) {
         Optional<Company> company = companyRepository.findByName(name);
         if (company.isPresent()) {
-            throw new RuntimeException("Company with name " + name + " already exists");
+            throw new BusinessException("Company with name " + name + " already exists");
         }
     }
 

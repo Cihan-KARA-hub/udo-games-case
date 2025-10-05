@@ -1,5 +1,6 @@
 package com.UDO.GameAnalytics.service;
 
+import com.UDO.GameAnalytics.core.exception.type.BusinessException;
 import com.UDO.GameAnalytics.dto.company.request.CreateCompanyRequestDto;
 import com.UDO.GameAnalytics.dto.company.response.CompanyProfitResponseDto;
 import com.UDO.GameAnalytics.dto.company.response.CreateCompanyResponseDto;
@@ -47,12 +48,12 @@ public class CompanyServiceImpl {
     }
 
     public Company getCompany(Long id) {
-        return companyRepository.findById(id).orElseThrow(() -> new RuntimeException("company not exist"));
+        return companyRepository.findById(id).orElseThrow(() -> new BusinessException("company not exist"));
     }
 
     @Transactional
     public CompanyProfitResponseDto profit(Long companyId) {
-        Company com = companyRepository.findById(companyId).orElseThrow(() -> new RuntimeException("company not exist"));
+        Company com = companyRepository.findById(companyId).orElseThrow(() -> new BusinessException("company not exist"));
         Map<String, BigDecimal> totalAmount = calculateNetIncome(com.getGames());
         return new CompanyProfitResponseDto(com.getId(), totalAmount);
     }

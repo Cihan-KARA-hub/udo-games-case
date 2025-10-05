@@ -1,5 +1,6 @@
 package com.UDO.GameAnalytics.rules;
 
+import com.UDO.GameAnalytics.core.exception.type.BusinessException;
 import com.UDO.GameAnalytics.entity.Company;
 import com.UDO.GameAnalytics.entity.Game;
 import com.UDO.GameAnalytics.repository.GameRepository;
@@ -19,10 +20,10 @@ public class GameRule {
     public void findExistByGameName(String gameName) {
         Optional<Game> game = gameRepository.findByName(gameName);
         if (game.isPresent()) {
-            throw new RuntimeException("Game with name " + gameName + " already exists");
+            throw new BusinessException("Game with name " + gameName + " already exists");
         }
     }
     public Game findExistById(Long gameId) {
-       return gameRepository.findById(gameId).orElseThrow(() -> new RuntimeException("Game with id " + gameId + " does not exist"));
+       return gameRepository.findById(gameId).orElseThrow(() -> new BusinessException("Game with id " + gameId + " does not exist"));
     }
 }

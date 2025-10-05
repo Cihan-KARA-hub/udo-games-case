@@ -6,6 +6,7 @@ import com.UDO.GameAnalytics.dto.event.response.RevenuesResponseDto;
 import com.UDO.GameAnalytics.dto.game.response.GameDto;
 import com.UDO.GameAnalytics.entity.Event;
 import com.UDO.GameAnalytics.service.EventServiceImpl;
+
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class EventController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateEventResponseDto createEventRequestDto(@RequestBody @Valid CreateEventRequestDto createEventRequestDto) {
+    public CreateEventResponseDto createEventRequestDto(@Valid @RequestBody CreateEventRequestDto createEventRequestDto) {
         return eventService.createEvent(createEventRequestDto);
     }
 

@@ -1,5 +1,6 @@
 package com.UDO.GameAnalytics.service;
 
+import com.UDO.GameAnalytics.core.exception.type.BusinessException;
 import com.UDO.GameAnalytics.dto.event.request.CreateEventRequestDto;
 import com.UDO.GameAnalytics.dto.event.response.CreateEventResponseDto;
 import com.UDO.GameAnalytics.dto.event.response.DailyTotalDto;
@@ -59,8 +60,8 @@ public class EventServiceImpl {
 
     public Page<DailyTotalDto> getPageRevenues(Long id, int size, int page) {
         Pageable pageable = PageRequest.of(page, size);
+        eventRepository.findById(id).orElseThrow(()-> new BusinessException("Evet not found"));
         return eventRepository.findDailyTotalsByGameId(id, pageable);
-
     }
 
     public  Map<String,BigDecimal> findByGameIdTotalAmount(Long gameId) {

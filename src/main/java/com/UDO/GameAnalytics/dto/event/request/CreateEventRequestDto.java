@@ -9,11 +9,10 @@ import java.math.BigDecimal;
 public class CreateEventRequestDto {
     @NotNull()
     private Long gameId;
-    @NotBlank()
+    @NotNull()
     private IncomeType type;
     @NotNull()
     @Positive
-    @Min(0)
     private BigDecimal amount;
     @NotNull
     private Currency currency;
